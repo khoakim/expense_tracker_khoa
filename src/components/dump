@@ -1,0 +1,18 @@
+    <TextInput 
+    // style={styles.item} 
+    onChangeText={setText} value={text} />
+    <Text>Amount</Text>
+    {/* <TextInput
+      style={styles.item}
+      onChangeText={setAmount}
+      value={amount}
+    /> */}
+    <Button
+      title="Save"
+      onPress={()=>onSubmit}
+      // onPress={() => {
+      //   updateBlogPost(item.id, title, content, () =>
+      //     navigation.navigate("Index")
+      //   );
+      // }}
+      />
