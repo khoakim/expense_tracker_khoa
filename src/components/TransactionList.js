@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import { Transaction } from "./Transaction";
 import {
   View,
   Text,
@@ -95,6 +94,13 @@ const TransactionList = () => {
 
   return (
     <View>
+      <View style={{ padding: SIZES.padding, width: 300 }}>
+        <FlatList
+          data={data}
+          renderItem={renderItem}
+          keyExtractor={item => `${item.id}`}
+        />
+      </View>
       <Text h3>History</Text>
       {/* <ul className="list">
         {transactions.map(transaction => (<Transaction key={transaction.id} transaction={transaction} />))}
@@ -112,14 +118,6 @@ const TransactionList = () => {
             );
           }}
           keyExtractor={transaction => transaction.id}
-        />
-      </View>
-
-      <View style={{ padding: SIZES.padding, width: 300, marginTop: 100 }}>
-        <FlatList
-          data={data}
-          renderItem={renderItem}
-          keyExtractor={item => `${item.id}`}
         />
       </View>
     </View>

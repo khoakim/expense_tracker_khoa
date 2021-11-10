@@ -1,11 +1,14 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import { Button } from "react-native-elements";
+import Icon from "react-native-vector-icons/FontAwesome";
+
 import Header from "../components/Header";
 import Balance from "../components/Balance";
 import IncomeExpenses from "../components/IncomeExpenses";
-import TransactionList from "../components/TransactionList";
+
 import AddTransaction from "../components/AddTransaction";
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
   return (
     //
     <View style={styles.body}>
@@ -13,9 +16,14 @@ const HomeScreen = () => {
       <View style={styles.container}>
         <Balance />
       </View>
-      <IncomeExpenses />
-      <View style={styles.list}>
-        <TransactionList />
+      <IncomeExpenses navigation={navigation} />
+      <View>
+        <Button
+          icon={<Icon name="arrow-right" size={15} color="white" />}
+          title="Add"
+          onPress={() => navigation.navigate("Add")}
+        />
+        <Button title="Add" />
       </View>
 
       <AddTransaction />

@@ -1,15 +1,16 @@
-import {StatusBar} from "expo-status-bar";
+import { StatusBar } from "expo-status-bar";
 import React from "react";
-import {StyleSheet, Text, View, Button} from "react-native";
-import {createNativeStackNavigator} from "@react-navigation/native-stack";
-import {NavigationContainer} from "@react-navigation/native";
-
+import { StyleSheet, Text, View, Button } from "react-native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { NavigationContainer } from "@react-navigation/native";
 
 import HomeScreen from "./src/screens/HomeScreen";
+import ExpenseScreen from "./src/screens/ExpenseScreen";
+import AddScreen from "./src/screens/AddScreen";
 import LoginScreen from "./src/screens/LoginScreen";
 import TransactionDetailsScreen from "./src/screens/TransactionDetailsScreen";
 
-import { GlobalContextProvider } from './src/context/GlobalContext';
+import { GlobalContextProvider } from "./src/context/GlobalContext";
 
 const Stack = createNativeStackNavigator();
 
@@ -23,6 +24,8 @@ export default function App() {
             component={AddTransactionScreen}
           /> */}
           <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Expense" component={ExpenseScreen} />
+          <Stack.Screen name="Add" component={AddScreen} />
           {/* <Stack.Screen name="Login" component={LoginScreen} />
           <Stack.Screen
             name="TransactionDetails"
@@ -40,6 +43,6 @@ export default function App() {
           /> */}
         </Stack.Navigator>
       </NavigationContainer>
-     </GlobalContextProvider>
+    </GlobalContextProvider>
   );
 }
