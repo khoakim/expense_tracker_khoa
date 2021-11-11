@@ -16,7 +16,7 @@ const TransactionList = () => {
   const [selectedCategory, setSelectedCategory] = React.useState(null);
   const { transactions } = useContext(GlobalContext);
 
-  console.log(`transactions`, transactions);
+  // console.log(`transactions`, transactions);
 
   // label: `${percentage}%`,
   // y: Number(item.y),

@@ -23,7 +23,6 @@ const HomeScreen = ({ navigation }) => {
           title="Add"
           onPress={() => navigation.navigate("Add")}
         />
-        <Button title="Add" />
       </View>
 
       <AddTransaction />

@@ -1,11 +1,11 @@
 const images = {
   dog: {
     imgName: "Dog",
-    uri: require("path/to/local/image"),
+    uri: require("../../assets/icons/education_icon.png"),
   },
   cat: {
     imgName: "Cat on a Boat",
-    uri: require("path/to/local/image"),
+    uri: require("../../assets/icons/education_icon.png"),
   },
 };
 
