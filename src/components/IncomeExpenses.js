@@ -4,32 +4,38 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 //Money formatter function
 function moneyFormatter(num) {
-  let p = num.toFixed(2).split(".");
-  return (
-    "$ " +
-    p[0]
-      .split("")
-      .reverse()
-      .reduce(function (acc, num, i, orig) {
-        return num === "-" ? acc : num + (i && !(i % 3) ? "," : "") + acc;
-      }, "") +
-    "." +
-    p[1]
-  );
+  if (typeof num !== "undefined") {
+    let p = num.toFixed(2).split(".");
+    return (
+      "$ " +
+      p[0]
+        .split("")
+        .reverse()
+        .reduce(function (acc, num, i, orig) {
+          return num === "-" ? acc : num + (i && !(i % 3) ? "," : "") + acc;
+        }, "") +
+      "." +
+      p[1]
+    );
+  } else return 0;
 }
 
 const IncomeExpenses = ({ navigation }) => {
   const { transactions } = useContext(GlobalContext);
 
-  const amounts = transactions.map(transaction => transaction.amount);
+  let income = 0;
+  let expense = 0;
+  const amounts =
+    transactions && transactions.map(transaction => transaction.amount);
 
-  const income = amounts
-    .filter(item => item > 0)
-    .reduce((acc, item) => (acc += item), 0);
+  income =
+    amounts &&
+    amounts.filter(item => item > 0).reduce((acc, item) => (acc += item), 0);
 
-  const expense =
+  expense =
+    amounts &&
     amounts.filter(item => item < 0).reduce((acc, item) => (acc += item), 0) *
-    -1;
+      -1;
 
   return (
     <View style={styles.container}>
@@ -48,7 +54,9 @@ const IncomeExpenses = ({ navigation }) => {
           }}
         >
           <Text h4>Income</Text>
-          <Text style={styles.moneyplus}>{moneyFormatter(income)}</Text>
+          <Text style={styles.moneyplus}>
+            {transactions ? moneyFormatter(income) : 0}
+          </Text>
         </View>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate("Expense")}>
@@ -69,7 +77,9 @@ const IncomeExpenses = ({ navigation }) => {
           <Text h4 style={styles.moneyminus}>
             Expense
           </Text>
-          <Text style={styles.moneyminus}>{moneyFormatter(expense)}</Text>
+          <Text style={styles.moneyminus}>
+            -{transactions ? moneyFormatter(expense) : 0}
+          </Text>
         </View>
       </TouchableOpacity>
     </View>

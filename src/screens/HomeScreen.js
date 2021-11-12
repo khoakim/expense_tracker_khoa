@@ -17,15 +17,15 @@ const HomeScreen = ({ navigation }) => {
         <Balance />
       </View>
       <IncomeExpenses navigation={navigation} />
-      <View>
+      {/* <View>
         <Button
           icon={<Icon name="arrow-right" size={15} color="white" />}
           title="Add"
           onPress={() => navigation.navigate("Add")}
         />
-      </View>
+      </View> */}
 
-      <AddTransaction />
+      {/* <AddTransaction /> */}
     </View>
   );
 };
